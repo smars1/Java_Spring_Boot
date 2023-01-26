@@ -129,9 +129,19 @@ Se ocupa para poder rescatar valores de propiedades que estan en el archivo prop
 ```
 
 
+# Creando un proyecto en spring tool
 
+las carpetas principales son:
 
+- ``src/main/java``
+- ``src/main/resources``
 
+son la misma carpeta pero con difente ruta en su 3 ramificacion para dentro. son las mas importantes a nivel carpeta
+
+``target``Es solamente para cuando compilamos la aplicacion, aqui apareseran las clases compiladas, ``target`` por lo general no se 
+sube al repositorio del codigo.
+
+En HELP.md se pueden poner instrucciones o comentarios para que otro programdor pueda leerlos 
 
 
 
