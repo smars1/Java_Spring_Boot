@@ -54,11 +54,13 @@ SpringBootApplication es la etiqueta principal de Spring, define que el proyecto
 ```
 
 ## Repositoy
+Se usa para identificar la capa de acceso a datos, esta sera la que va hacer consultas a la base de datos
 
 ## Service
+Se utiliza para la logica de negocios donde uno hace un calculo o variacion que viene desde el ``Front``
 
 ## Configuration
-
+Es una notacion que se utiiza para 
 ## Bean
 
 ## Autowired
