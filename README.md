@@ -31,14 +31,14 @@ Es  una libreria de java que a tra ves de anotaciones nos reduce codigo que codi
 
 | @Tags |
 |-------|
-[SpringBootApplication]()
-[Creacion de Api rest]()
-[Repositoy]()
-[Service]()
-[Configuration]()
-[Bean]()
-[Autowired]()
-[Value]()
+[SpringBootApplication](https://github.com/smars1/Java_Spring_Boot/blob/main/README.md#springbootapplication)
+[Creacion de Api rest](https://github.com/smars1/Java_Spring_Boot/blob/main/README.md#creacion-de-api-rest)
+[Repositoy](https://github.com/smars1/Java_Spring_Boot/blob/main/README.md#repositoy)
+[Service](https://github.com/smars1/Java_Spring_Boot/blob/main/README.md#service)
+[Configuration](https://github.com/smars1/Java_Spring_Boot/blob/main/README.md#configuration)
+[Bean](https://github.com/smars1/Java_Spring_Boot/blob/main/README.md#bean)
+[Autowired](https://github.com/smars1/Java_Spring_Boot/blob/main/README.md#autowired)
+[Value](https://github.com/smars1/Java_Spring_Boot/blob/main/README.md#value)
 
 ## SpringBootApplication
 SpringBootApplication es la etiqueta principal de Spring, define que el proyecto parta como un proyecto Spring no java
