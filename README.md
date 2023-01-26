@@ -60,16 +60,73 @@ Se usa para identificar la capa de acceso a datos, esta sera la que va hacer con
 Se utiliza para la logica de negocios donde uno hace un calculo o variacion que viene desde el ``Front``
 
 ## Configuration
-Es una notacion que se utiiza para 
+Es una notacion que se utiiza para configurar alguna clases  dependencia 
+```.java
+@Configuration
+```
+
 ## Bean
+Clases estatica dentro de la aplicacion
+```.java
+@Bean
+```
 
 ## Autowired
+Se puede inyectar en dependencia en spring y utilizar los beans
+```.java
+@Autowired
+```
 
 ## Value
+Se ocupa para poder rescatar valores de propiedades que estan en el archivo propertis de spring
+```.java
+@
+```
+# Anotaciones importantes
+
+## Getter 
+
+```.java
+@Getter
+```
+## Setter 
+
+```.java
+@Setter
+```
+
+## ToString
+
+```.java
+@ToString
+```
+
+## Data
+
+```.java
+@Data
+```
+
+# Construciones
+
+## RequiredArgsConstructor
+
+```.java
+@RequiredArgsConstructor
+```
 
 
+## AllArgsConstructor
 
+```.java
+@AllArgsConstructor
+```
 
+## Log4j2
+
+```.java
+@log4j2
+```
 
 
 
