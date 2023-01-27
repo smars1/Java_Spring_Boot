@@ -42,6 +42,78 @@ Es  una libreria de java que a tra ves de anotaciones nos reduce codigo que codi
 [Autowired](https://github.com/smars1/Java_Spring_Boot/blob/main/README.md#autowired)
 [Value](https://github.com/smars1/Java_Spring_Boot/blob/main/README.md#value)
 
+
+# ``@Entity``, en la creacion de modelos
+ Utilizamos ``@Entity`` cuando marcamos una clase como una entidad en Java Persistence Api (JPA). Esta anotacion se usa para crear un modelo en la DB, es utilizada     
+ para mapear las clases de una tabla de una DB y define las columnas de la tabla, tambien es usada para definir las caracteristicas del modelo y sus data types.
+
+
+ - Mapeo de una tabla en una base de datos
+ - No contiene metodos
+ - Solo getters y setters
+ - Contiene los mismos campos que la tabla en la bd
+ - Contiene relaciones con otras entidades
+
+ ### Ejemplo Creacion de un modelo de una tabla de DB llamada Persons
+ ![image](https://user-images.githubusercontent.com/42829215/215180867-53ab8f90-fb2f-4e86-a156-6363d67fb44e.png)
+
+ # Dto tier, usando ``@Data`` en Dto
+ La capa ``Dto`` es la encargada de transferir datos entre la base de datos y la aplicacion, El nivel DTO es responsable de asignar objetos de la aplicación a objetos de transferencia de datos (DTO) y viceversa. El nivel DTO también proporciona métodos para acceder y modificar datos en la base de datos.
+ 
+ - No mapean tabla de bd
+ - Solo getters y setters
+ - Son la respuesta al request (endpoint)
+ - Diseñadas para la vista
+ - Puede contener info de muchas entidades
+ 
+@Data es una anotación de Lombok que se usa en el nivel DTO para generar métodos getter y setter para una clase. Esta anotación genera el código repetitivo necesario para acceder y modificar campos en una clase DTO. Se utiliza para proporcionar una forma rápida y fácil de acceder y modificar datos en el nivel DTO de una aplicación.
+ ### Ejemplo creacion de un Dto
+ ![image](https://user-images.githubusercontent.com/42829215/215198795-739eb6bf-96db-4f75-a5a4-a0efca15549b.png)
+
+
+# Capa repository, uso de ``@Repository``
+
+@Repository es una anotación utilizada para marcar una clase como repositorio de datos en la API de persistencia de Java (JPA). Esta anotación se utiliza para definir la interfaz para acceder y manipular datos en una base de datos. También se utiliza para proporcionar una capa de abstracción entre la aplicación y la base de datos, lo que facilita la realización de cambios en la base de datos sin afectar el código de la aplicación.
+ 
+ - Usar ``@Repository``
+ - Crear metodos que herenden de JpaRepository
+ - Tiene metodos para obtener registros : findAll, findById, existById, save, deleteById, etc
+ - No contiene metodos de logica de negocio
+ - Recibe y envia entidades
+ ### Ejemplo de creacion de repository
+ 
+ ![image](https://user-images.githubusercontent.com/42829215/215205074-0fba585a-238d-47a3-8a9f-352a03317342.png)
+ 
+# Capa service, usando ``@Service``
+
+@Service es una anotación utilizada para marcar una clase como servicio en Spring Framework. Esta anotación se usa para definir la interfaz para proporcionar servicios a otras clases en la aplicación. También se utiliza para proporcionar una capa de abstracción entre el código de la aplicación y la lógica empresarial de la aplicación.
+
+ - se usa @Service en la clase Implement no en la interfaz
+ - Contiene logica de negocio
+ - Maneja DTO
+ - Transforma DTO a entidad o viceversa
+ - Intermediario entre Controller y Repository
+ - Recibe entidades del Repository y manda DTO al Controller
+ 
+ ### Ejemplo de una interfaz servicio
+ ![image](https://user-images.githubusercontent.com/42829215/215207597-7e26386a-71c4-4f8a-8c21-662ba365e010.png)
+ ### Ejamplo de una implementacion de sercio en una clase
+ ![image](https://user-images.githubusercontent.com/42829215/215207882-bb17eea0-aede-4f5d-b5d9-3e4b5229b85c.png)
+ 
+ 
+# Capa controller, uso de ``@RestController``
+El nivel de controlador es responsable de manejar las solicitudes del usuario de la aplicación. Es responsable de enrutar las solicitudes al servicio apropiado en la aplicación y de devolver la respuesta al usuario. El nivel de controlador también proporciona métodos de autenticación, autorización y validación de datos.
+
+ - Usar @RestController
+ - No contiene logicaa
+ - Recibe y envia DTO
+ - Intermediario entre Usuario y Service
+ 
+ ``@RestController`` es una anotación utilizada en Spring Framework para marcar una clase como controlador para manejar solicitudes REST. Esta anotación se usa para definir la interfaz para manejar solicitudes REST, como solicitudes GET, POST, PUT y DELETE. También se utiliza para proporcionar una capa de abstracción entre el código de la aplicación y el protocolo HTTP.
+ 
+
+
+
 ## SpringBootApplication
 SpringBootApplication es la etiqueta principal de Spring, define que el proyecto parta como un proyecto Spring no java
 ```.java
@@ -531,3 +603,6 @@ log.info(personService.findAll());
 ```
 ![image](https://user-images.githubusercontent.com/42829215/215032299-79bced19-a8a7-4f40-ac97-2567d4a5f87d.png)
 Podemos jugar llamando a la funcion con el primer log con el segfundo llamara a todos sin especificar el servicio
+
+
+# 
