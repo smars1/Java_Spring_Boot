@@ -457,10 +457,75 @@ le quitamos el null y ponemos lo que inyectaremos
 public List<Person> findAllName(String name) {
 return personRepository.findAllByName(name);
 }
+```
 ![image](https://user-images.githubusercontent.com/42829215/215022322-f4d0cc8e-d6a9-49fd-93eb-9c197ea4599d.png)
 Ahora Creamos el @Autowire, para ello nos dirigimos a datource en el package main
 
+y ahi creamos el @Autowire 
+
+```.java
+// inyectamos el servicio @Bean
+@Autowired
+private final PersonService personService;
+DetasourceApplication(PersonService personService) {
+this.personService = personService;
+}
+```
+
+posteriormente definimos ``@PostConstrucor`` y ``@Log4j2``
+y creamos el constructor de la siguiente manera para imprimir el dato que estamos llamando
+
+```.java
+@PostConstruct
+void test() {
+log.info(personService.findAllName("Hector Pacheco"));
+}
+
+```
+![image](https://user-images.githubusercontent.com/42829215/215026787-970f76b5-6479-4861-a85e-dd006d0a3d28.png)
+
+Ahora en PersonService creamous un service para guardar una persona
+
+```.java
+// devolvemos la person que tendra nuestra id Creamos otro override en PersonServiceImpl para agregar este
+Person save(Person person);
+
+```
+![image](https://user-images.githubusercontent.com/42829215/215031960-ad9a2c5d-a3db-4698-a7c8-fabee42899ee.png)
+![image](https://user-images.githubusercontent.com/42829215/215031981-7029e672-38b7-4887-99a6-839293da7a48.png)
+![image](https://user-images.githubusercontent.com/42829215/215032003-ab2a4c5a-650b-43b6-aab8-b38ec1e19249.png)
+
+```.java
+@PostConstruct
+void test() {
+//ahora modifocamos en test 
+Person person = new Person();
+person.setName("Ejemplo");
+person.setEmail("Charmander@********");
+person.setBirth_date(LocalDate.now());
+person.setId(50L);
+Commune commune = new Commune();
+person.setCommune(commune );
+personService.save(person);
+log.info(personService.findAllName("Hector Pacheco"));
+}
 
 ```
 
+Y ahora podemos generar el método para ejecutarlo
 
+```.java
+List<Person>findAll();
+```
+
+![image](https://user-images.githubusercontent.com/42829215/215032187-a817243d-b3bf-48fa-94e8-4ace6e1ddbe8.png)
+Y hacemos otro #Override para findAll() que creamos
+
+![image](https://user-images.githubusercontent.com/42829215/215032234-dba21bb8-7ff8-4ab4-bbdc-ad8f6e72b5cb.png)
+
+y agregamos lo siguiente een datasource
+```.java
+log.info(personService.findAll());
+```
+![image](https://user-images.githubusercontent.com/42829215/215032299-79bced19-a8a7-4f40-ac97-2567d4a5f87d.png)
+Podemos jugar llamando a la funcion con el primer log con el segfundo llamara a todos sin especificar el servicio
