@@ -17,8 +17,8 @@ Spring Tools 4 es la próxima generación de herramientas Spring para su entorno
 | ----- |
 [ Nomenclatura de nombre de packages ]()
 [ Anotaciones Importantes ]()
-[Agregar dependencias necesarias para trabajar con MySQL]()
-[Realizar CRUD de un registro de una tabla en base de datos]()
+[Agregar dependencias necesarias para trabajar con MySQL](https://github.com/smars1/Java_Spring_Boot/blob/main/README.md#agregar-dependencias-necesarias-para-trabajar-con-mysql)
+[Realizar CRUD de un registro de una tabla en base de datos](https://github.com/smars1/Java_Spring_Boot/blob/main/README.md#realizar-crud-de-un-registro-de-una-tabla-en-base-de-datos)
 
 
 # Nomenclatura de nombre de packages 
