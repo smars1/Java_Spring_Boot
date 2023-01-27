@@ -492,7 +492,9 @@ Person save(Person person);
 
 ```
 ![image](https://user-images.githubusercontent.com/42829215/215031960-ad9a2c5d-a3db-4698-a7c8-fabee42899ee.png)
+Ahora vamos y creamos el ``@Override`` correspondiente querando de la siguiente manera esl el ultimo
 ![image](https://user-images.githubusercontent.com/42829215/215031981-7029e672-38b7-4887-99a6-839293da7a48.png)
+seteamos los parametros de las tablas en data source en test asi como el nuevo ``log.info(personService.findAllName("Hector Pacheco"));``
 ![image](https://user-images.githubusercontent.com/42829215/215032003-ab2a4c5a-650b-43b6-aab8-b38ec1e19249.png)
 
 ```.java
