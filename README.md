@@ -66,14 +66,14 @@ Es  una libreria de java que a tra ves de anotaciones nos reduce codigo que codi
  - Diseñadas para la vista
  - Puede contener info de muchas entidades
  
-@Data es una anotación de Lombok que se usa en el nivel DTO para generar métodos getter y setter para una clase. Esta anotación genera el código repetitivo necesario para acceder y modificar campos en una clase DTO. Se utiliza para proporcionar una forma rápida y fácil de acceder y modificar datos en el nivel DTO de una aplicación.
+``@Data`` es una anotación de Lombok que se usa en el nivel DTO para generar métodos getter y setter para una clase. Esta anotación genera el código repetitivo necesario para acceder y modificar campos en una clase DTO. Se utiliza para proporcionar una forma rápida y fácil de acceder y modificar datos en el nivel DTO de una aplicación.
  ### Ejemplo creacion de un Dto
  ![image](https://user-images.githubusercontent.com/42829215/215198795-739eb6bf-96db-4f75-a5a4-a0efca15549b.png)
 
 # Configuration tier, uso de @Configuration y @Bean
 @Configuration es una anotación utilizada en Spring Framework para marcar una clase como clase de configuración. Esta anotación se utiliza para definir los ajustes de configuración de la aplicación, como los ajustes de conexión a la base de datos, los ajustes de autenticación o los ajustes de registro. También se utiliza para proporcionar una capa de abstracción entre el código de la aplicación y los ajustes de configuración.
 
-@Bean es una anotación utilizada en Spring-Boot para definir un bean en el contexto de la aplicación Spring. Se utiliza para crear y configurar beans en los archivos de configuración de Spring. @Bean permite a los desarrolladores acceder y manipular directamente las instancias de bean en su código. También se puede usar para registrar beans existentes con el contexto de la aplicación.
+``@Bean`` es una anotación utilizada en Spring-Boot para definir un bean en el contexto de la aplicación Spring. Se utiliza para crear y configurar beans en los archivos de configuración de Spring. @Bean permite a los desarrolladores acceder y manipular directamente las instancias de bean en su código. También se puede usar para registrar beans existentes con el contexto de la aplicación.
 
 ### Ejemplo teplapete de configution para mapper
 ![image](https://user-images.githubusercontent.com/42829215/215221494-f97d86d9-b015-4122-807c-cbf1b4cef19b.png)
