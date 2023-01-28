@@ -43,6 +43,12 @@ Es  una libreria de java que a tra ves de anotaciones nos reduce codigo que codi
 [Value](https://github.com/smars1/Java_Spring_Boot/blob/main/README.md#value)
 
 
+|-- Capas --|
+|-----------|
+[``@Entity`` en la creacio de modelos](https://github.com/smars1/Java_Spring_Boot#entity-en-la-creacion-de-modelos)
+[Dto tier, usando ``@Data``](https://github.com/smars1/Java_Spring_Boot#dto-tier-usando-data-en-dto)
+[Capa Controller, uso de @Restcontroller](https://github.com/smars1/Java_Spring_Boot#capa-controller-uso-de-restcontroller)
+
 # ``@Entity``, en la creacion de modelos
  Utilizamos ``@Entity`` cuando marcamos una clase como una entidad en Java Persistence Api (JPA). Esta anotacion se usa para crear un modelo en la DB, es utilizada     
  para mapear las clases de una tabla de una DB y define las columnas de la tabla, tambien es usada para definir las caracteristicas del modelo y sus data types.
