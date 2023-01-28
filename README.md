@@ -47,7 +47,7 @@ Es  una libreria de java que a tra ves de anotaciones nos reduce codigo que codi
 |-----------|
 [``@Entity`` en la creacio de modelos](https://github.com/smars1/Java_Spring_Boot#entity-en-la-creacion-de-modelos)
 [Dto tier, usando ``@Data``](https://github.com/smars1/Java_Spring_Boot#dto-tier-usando-data-en-dto)
-[Capa Controller, uso de @Restcontroller](https://github.com/smars1/Java_Spring_Boot#capa-controller-uso-de-restcontroller)
+[Capa Controller, uso de ``@Restcontroller``](https://github.com/smars1/Java_Spring_Boot#capa-controller-uso-de-restcontroller)
 
 # ``@Entity``, en la creacion de modelos
  Utilizamos ``@Entity`` cuando marcamos una clase como una entidad en Java Persistence Api (JPA). Esta anotacion se usa para crear un modelo en la DB, es utilizada     
@@ -63,45 +63,14 @@ Es  una libreria de java que a tra ves de anotaciones nos reduce codigo que codi
  ### Ejemplo Creacion de un modelo de una tabla de DB llamada Persons
  ![image](https://user-images.githubusercontent.com/42829215/215180867-53ab8f90-fb2f-4e86-a156-6363d67fb44e.png)
 
- # Dto tier, usando ``@Data`` en Dto
- La capa ``Dto`` es la encargada de transferir datos entre la base de datos y la aplicacion, El nivel DTO es responsable de asignar objetos de la aplicación a objetos de transferencia de datos (DTO) y viceversa. El nivel DTO también proporciona métodos para acceder y modificar datos en la base de datos.
- 
- - No mapean tabla de bd
- - Solo getters y setters
- - Son la respuesta al request (endpoint)
- - Diseñadas para la vista
- - Puede contener info de muchas entidades
- 
-``@Data`` es una anotación de Lombok que se usa en el nivel DTO para generar métodos getter y setter para una clase. Esta anotación genera el código repetitivo necesario para acceder y modificar campos en una clase DTO. Se utiliza para proporcionar una forma rápida y fácil de acceder y modificar datos en el nivel DTO de una aplicación.
- ### Ejemplo creacion de un Dto
- ![image](https://user-images.githubusercontent.com/42829215/215198795-739eb6bf-96db-4f75-a5a4-a0efca15549b.png)
-
-# Configuration tier, uso de @Configuration y @Bean
-@Configuration es una anotación utilizada en Spring Framework para marcar una clase como clase de configuración. Esta anotación se utiliza para definir los ajustes de configuración de la aplicación, como los ajustes de conexión a la base de datos, los ajustes de autenticación o los ajustes de registro. También se utiliza para proporcionar una capa de abstracción entre el código de la aplicación y los ajustes de configuración.
-
-``@Bean`` es una anotación utilizada en Spring-Boot para definir un bean en el contexto de la aplicación Spring. Se utiliza para crear y configurar beans en los archivos de configuración de Spring. @Bean permite a los desarrolladores acceder y manipular directamente las instancias de bean en su código. También se puede usar para registrar beans existentes con el contexto de la aplicación.
+``@Bean`` es una anotación utilizada en Spring-Boot para definir un bean en el contexto de la aplicación Spring. Se utiliza para crear y configurar beans en los archivos de configuración de Spring. ``@Bean`` permite a los desarrolladores acceder y manipular directamente las instancias de bean en su código. También se puede usar para registrar beans existentes con el contexto de la aplicación.
 
 ### Ejemplo teplapete de configution para mapper
 ![image](https://user-images.githubusercontent.com/42829215/215221494-f97d86d9-b015-4122-807c-cbf1b4cef19b.png)
 
-
-
-
-
-# Mapper, usando ``@Component`` y ``@RequiredArgsConstructor``
-Debemos configurar una capa mapper para transformar los modelos ``DTO`` ya que cuando uno devuelve bien la respuesta debemos convertir a ``DTO``.
-El nivel Mapper es responsable de mapear datos de un formato a otro. Se utiliza para convertir datos de un formato a otro, como de un formato de base de datos a un formato XML, o de un formato XML a un formato JSON. El nivel Mapper también proporciona métodos para transformar datos de un formato a otro, como mapear un objeto de base de datos a un objeto XML o mapear un objeto XML a un objeto JSON.
-
-- Usa ``@Component``
-- Usa ``@RequiredArgsConstructor``
-  
- ### Ejemplo de un ``mapper model``
- ![image](https://user-images.githubusercontent.com/42829215/215220377-83474b9b-2d39-47b9-9693-f774a6e316ec.png)
-
-
 # Capa repository, uso de ``@Repository``
 
-@Repository es una anotación utilizada para marcar una clase como repositorio de datos en la API de persistencia de Java (JPA). Esta anotación se utiliza para definir la interfaz para acceder y manipular datos en una base de datos. También se utiliza para proporcionar una capa de abstracción entre la aplicación y la base de datos, lo que facilita la realización de cambios en la base de datos sin afectar el código de la aplicación.
+``@Repository`` es una anotación utilizada para marcar una clase como repositorio de datos en la API de persistencia de Java (JPA). Esta anotación se utiliza para definir la interfaz para acceder y manipular datos en una base de datos. También se utiliza para proporcionar una capa de abstracción entre la aplicación y la base de datos, lo que facilita la realización de cambios en la base de datos sin afectar el código de la aplicación.
  
  - Usar ``@Repository``
  - Crear metodos que herenden de JpaRepository
@@ -114,7 +83,7 @@ El nivel Mapper es responsable de mapear datos de un formato a otro. Se utiliza 
  
 # Capa service, usando ``@Service``
 
-@Service es una anotación utilizada para marcar una clase como servicio en Spring Framework. Esta anotación se usa para definir la interfaz para proporcionar servicios a otras clases en la aplicación. También se utiliza para proporcionar una capa de abstracción entre el código de la aplicación y la lógica empresarial de la aplicación.
+``@Service`` es una anotación utilizada para marcar una clase como servicio en Spring Framework. Esta anotación se usa para definir la interfaz para proporcionar servicios a otras clases en la aplicación. También se utiliza para proporcionar una capa de abstracción entre el código de la aplicación y la lógica empresarial de la aplicación.
 
  - se usa @Service en la clase Implement no en la interfaz
  - Contiene logica de negocio
@@ -128,6 +97,31 @@ El nivel Mapper es responsable de mapear datos de un formato a otro. Se utiliza 
  ### Ejamplo de una implementacion de sercio en una clase
  ![image](https://user-images.githubusercontent.com/42829215/215207882-bb17eea0-aede-4f5d-b5d9-3e4b5229b85c.png)
  
+  # Dto tier, usando ``@Data`` en Dto
+ La capa ``Dto`` es la encargada de transferir datos entre la base de datos y la aplicacion, El nivel DTO es responsable de asignar objetos de la aplicación a objetos de transferencia de datos (DTO) y viceversa. El nivel DTO también proporciona métodos para acceder y modificar datos en la base de datos.
+ 
+ - No mapean tabla de bd
+ - Solo getters y setters
+ - Son la respuesta al request (endpoint)
+ - Diseñadas para la vista
+ - Puede contener info de muchas entidades
+ 
+ # Mapper, usando ``@Component`` y ``@RequiredArgsConstructor``
+Debemos configurar una capa mapper para transformar los modelos ``DTO`` ya que cuando uno devuelve bien la respuesta debemos convertir a ``DTO``.
+El nivel Mapper es responsable de mapear datos de un formato a otro. Se utiliza para convertir datos de un formato a otro, como de un formato de base de datos a un formato XML, o de un formato XML a un formato JSON. El nivel Mapper también proporciona métodos para transformar datos de un formato a otro, como mapear un objeto de base de datos a un objeto XML o mapear un objeto XML a un objeto JSON.
+
+- Usa ``@Component``
+- Usa ``@RequiredArgsConstructor``
+  
+ ### Ejemplo de un ``mapper model``
+ ![image](https://user-images.githubusercontent.com/42829215/215220377-83474b9b-2d39-47b9-9693-f774a6e316ec.png)
+ 
+``@Data`` es una anotación de Lombok que se usa en el nivel DTO para generar métodos getter y setter para una clase. Esta anotación genera el código repetitivo necesario para acceder y modificar campos en una clase DTO. Se utiliza para proporcionar una forma rápida y fácil de acceder y modificar datos en el nivel DTO de una aplicación.
+ ### Ejemplo creacion de un Dto
+ ![image](https://user-images.githubusercontent.com/42829215/215198795-739eb6bf-96db-4f75-a5a4-a0efca15549b.png)
+ 
+ # Configuration tier, uso de @Configuration y ``@Bean``
+``@Configuration`` es una anotación utilizada en Spring Framework para marcar una clase como clase de configuración. Esta anotación se utiliza para definir los ajustes de configuración de la aplicación, como los ajustes de conexión a la base de datos, los ajustes de autenticación o los ajustes de registro. También se utiliza para proporcionar una capa de abstracción entre el código de la aplicación y los ajustes de configuración.
  
 # Capa controller, uso de ``@RestController``
 El nivel de controlador es responsable de manejar las solicitudes del usuario de la aplicación. Es responsable de enrutar las solicitudes al servicio apropiado en la aplicación y de devolver la respuesta al usuario. El nivel de controlador también proporciona métodos de autenticación, autorización y validación de datos.
