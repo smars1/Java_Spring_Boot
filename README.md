@@ -45,9 +45,17 @@ Es  una libreria de java que a tra ves de anotaciones nos reduce codigo que codi
 
 |-- Capas --|
 |-----------|
+[main]()
 [``@Entity`` en la creacio de modelos](https://github.com/smars1/Java_Spring_Boot#entity-en-la-creacion-de-modelos)
+[Capa repository, uso de ``@Repository``](https://github.com/smars1/Java_Spring_Boot/blob/main/README.md#capa-repository-uso-de-repository)
+[ Capa service, usando ``@Service``](https://github.com/smars1/Java_Spring_Boot/blob/main/README.md#capa-service-usando-service)
 [Dto tier, usando ``@Data``](https://github.com/smars1/Java_Spring_Boot#dto-tier-usando-data-en-dto)
+[Configuration tier, uso de @Configuration y ``@Bean``](https://github.com/smars1/Java_Spring_Boot/blob/main/README.md#configuration-tier-uso-de-configuration-y-bean)
+[Mapper, usando ``@Component`` y ``@RequiredArgsConstructor``](https://github.com/smars1/Java_Spring_Boot/blob/main/README.md#mapper-usando-component-y-requiredargsconstructor)
 [Capa Controller, uso de ``@Restcontroller``](https://github.com/smars1/Java_Spring_Boot#capa-controller-uso-de-restcontroller)
+
+
+
 
 # ``@Entity``, en la creacion de modelos
  Utilizamos ``@Entity`` cuando marcamos una clase como una entidad en Java Persistence Api (JPA). Esta anotacion se usa para crear un modelo en la DB, es utilizada     
@@ -106,6 +114,9 @@ Es  una libreria de java que a tra ves de anotaciones nos reduce codigo que codi
  - Diseñadas para la vista
  - Puede contener info de muchas entidades
  
+ ``@Data`` es una anotación de Lombok que se usa en el nivel DTO para generar métodos getter y setter para una clase. Esta anotación genera el código repetitivo necesario para acceder y modificar campos en una clase DTO. Se utiliza para proporcionar una forma rápida y fácil de acceder y modificar datos en el nivel DTO de una aplicación.
+ ### Ejemplo creacion de un Dto
+ ![image](https://user-images.githubusercontent.com/42829215/215198795-739eb6bf-96db-4f75-a5a4-a0efca15549b.png)
  
   # Configuration tier, uso de @Configuration y ``@Bean``
 ``@Configuration`` es una anotación utilizada en Spring Framework para marcar una clase como clase de configuración. Esta anotación se utiliza para definir los ajustes de configuración de la aplicación, como los ajustes de conexión a la base de datos, los ajustes de autenticación o los ajustes de registro. También se utiliza para proporcionar una capa de abstracción entre el código de la aplicación y los ajustes de configuración.
@@ -120,12 +131,7 @@ El nivel Mapper es responsable de mapear datos de un formato a otro. Se utiliza 
  ### Ejemplo de un ``mapper model``
  ![image](https://user-images.githubusercontent.com/42829215/215220377-83474b9b-2d39-47b9-9693-f774a6e316ec.png)
  
-``@Data`` es una anotación de Lombok que se usa en el nivel DTO para generar métodos getter y setter para una clase. Esta anotación genera el código repetitivo necesario para acceder y modificar campos en una clase DTO. Se utiliza para proporcionar una forma rápida y fácil de acceder y modificar datos en el nivel DTO de una aplicación.
- ### Ejemplo creacion de un Dto
- ![image](https://user-images.githubusercontent.com/42829215/215198795-739eb6bf-96db-4f75-a5a4-a0efca15549b.png)
- 
 
- 
 # Capa controller, uso de ``@RestController``
 El nivel de controlador es responsable de manejar las solicitudes del usuario de la aplicación. Es responsable de enrutar las solicitudes al servicio apropiado en la aplicación y de devolver la respuesta al usuario. El nivel de controlador también proporciona métodos de autenticación, autorización y validación de datos.
 
