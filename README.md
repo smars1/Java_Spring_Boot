@@ -71,11 +71,6 @@ Es  una libreria de java que a tra ves de anotaciones nos reduce codigo que codi
  ### Ejemplo Creacion de un modelo de una tabla de DB llamada Persons
  ![image](https://user-images.githubusercontent.com/42829215/215180867-53ab8f90-fb2f-4e86-a156-6363d67fb44e.png)
 
-``@Bean`` es una anotación utilizada en Spring-Boot para definir un bean en el contexto de la aplicación Spring. Se utiliza para crear y configurar beans en los archivos de configuración de Spring. ``@Bean`` permite a los desarrolladores acceder y manipular directamente las instancias de bean en su código. También se puede usar para registrar beans existentes con el contexto de la aplicación.
-
-### Ejemplo teplapete de configution para mapper
-![image](https://user-images.githubusercontent.com/42829215/215221494-f97d86d9-b015-4122-807c-cbf1b4cef19b.png)
-
 # Capa repository, uso de ``@Repository``
 
 ``@Repository`` es una anotación utilizada para marcar una clase como repositorio de datos en la API de persistencia de Java (JPA). Esta anotación se utiliza para definir la interfaz para acceder y manipular datos en una base de datos. También se utiliza para proporcionar una capa de abstracción entre la aplicación y la base de datos, lo que facilita la realización de cambios en la base de datos sin afectar el código de la aplicación.
@@ -120,8 +115,11 @@ Es  una libreria de java que a tra ves de anotaciones nos reduce codigo que codi
  
   # Configuration tier, uso de ``@Configuration`` y ``@Bean``
 ``@Configuration`` es una anotación utilizada en Spring Framework para marcar una clase como clase de configuración. Esta anotación se utiliza para definir los ajustes de configuración de la aplicación, como los ajustes de conexión a la base de datos, los ajustes de autenticación o los ajustes de registro. También se utiliza para proporcionar una capa de abstracción entre el código de la aplicación y los ajustes de configuración.
-### Ejemplo cracion de configuration tier
-![image](https://user-images.githubusercontent.com/42829215/215361385-ec3dfd5c-276b-4a50-8acc-34ac1651249b.png)
+
+``@Bean`` es una anotación utilizada en Spring-Boot para definir un bean en el contexto de la aplicación Spring. Se utiliza para crear y configurar beans en los archivos de configuración de Spring. ``@Bean`` permite a los desarrolladores acceder y manipular directamente las instancias de bean en su código. También se puede usar para registrar beans existentes con el contexto de la aplicación.
+
+### Ejemplo teplapete de configution para mapper
+![image](https://user-images.githubusercontent.com/42829215/215221494-f97d86d9-b015-4122-807c-cbf1b4cef19b.png)
 
 
  
