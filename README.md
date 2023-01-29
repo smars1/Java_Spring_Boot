@@ -50,7 +50,7 @@ Es  una libreria de java que a tra ves de anotaciones nos reduce codigo que codi
 [Capa repository, uso de ``@Repository``](https://github.com/smars1/Java_Spring_Boot/blob/main/README.md#capa-repository-uso-de-repository)
 [ Capa service, usando ``@Service``](https://github.com/smars1/Java_Spring_Boot/blob/main/README.md#capa-service-usando-service)
 [Dto tier, usando ``@Data``](https://github.com/smars1/Java_Spring_Boot#dto-tier-usando-data-en-dto)
-[Configuration tier, uso de @Configuration y ``@Bean``](https://github.com/smars1/Java_Spring_Boot/blob/main/README.md#configuration-tier-uso-de-configuration-y-bean)
+[Configuration tier, uso de ``@Configuration`` y ``@Bean``](https://github.com/smars1/Java_Spring_Boot/blob/main/README.md#configuration-tier-uso-de-configuration-y-bean)
 [Mapper, usando ``@Component`` y ``@RequiredArgsConstructor``](https://github.com/smars1/Java_Spring_Boot/blob/main/README.md#mapper-usando-component-y-requiredargsconstructor)
 [Capa Controller, uso de ``@Restcontroller``](https://github.com/smars1/Java_Spring_Boot#capa-controller-uso-de-restcontroller)
 
@@ -118,8 +118,12 @@ Es  una libreria de java que a tra ves de anotaciones nos reduce codigo que codi
  ### Ejemplo creacion de un Dto
  ![image](https://user-images.githubusercontent.com/42829215/215198795-739eb6bf-96db-4f75-a5a4-a0efca15549b.png)
  
-  # Configuration tier, uso de @Configuration y ``@Bean``
+  # Configuration tier, uso de ``@Configuration`` y ``@Bean``
 ``@Configuration`` es una anotación utilizada en Spring Framework para marcar una clase como clase de configuración. Esta anotación se utiliza para definir los ajustes de configuración de la aplicación, como los ajustes de conexión a la base de datos, los ajustes de autenticación o los ajustes de registro. También se utiliza para proporcionar una capa de abstracción entre el código de la aplicación y los ajustes de configuración.
+### Ejemplo cracion de configuration tier
+![image](https://user-images.githubusercontent.com/42829215/215361385-ec3dfd5c-276b-4a50-8acc-34ac1651249b.png)
+
+
  
  # Mapper, usando ``@Component`` y ``@RequiredArgsConstructor``
 Debemos configurar una capa mapper para transformar los modelos ``DTO`` ya que cuando uno devuelve bien la respuesta debemos convertir a ``DTO``.
