@@ -106,6 +106,10 @@ Es  una libreria de java que a tra ves de anotaciones nos reduce codigo que codi
  - Diseñadas para la vista
  - Puede contener info de muchas entidades
  
+ 
+  # Configuration tier, uso de @Configuration y ``@Bean``
+``@Configuration`` es una anotación utilizada en Spring Framework para marcar una clase como clase de configuración. Esta anotación se utiliza para definir los ajustes de configuración de la aplicación, como los ajustes de conexión a la base de datos, los ajustes de autenticación o los ajustes de registro. También se utiliza para proporcionar una capa de abstracción entre el código de la aplicación y los ajustes de configuración.
+ 
  # Mapper, usando ``@Component`` y ``@RequiredArgsConstructor``
 Debemos configurar una capa mapper para transformar los modelos ``DTO`` ya que cuando uno devuelve bien la respuesta debemos convertir a ``DTO``.
 El nivel Mapper es responsable de mapear datos de un formato a otro. Se utiliza para convertir datos de un formato a otro, como de un formato de base de datos a un formato XML, o de un formato XML a un formato JSON. El nivel Mapper también proporciona métodos para transformar datos de un formato a otro, como mapear un objeto de base de datos a un objeto XML o mapear un objeto XML a un objeto JSON.
@@ -120,8 +124,7 @@ El nivel Mapper es responsable de mapear datos de un formato a otro. Se utiliza 
  ### Ejemplo creacion de un Dto
  ![image](https://user-images.githubusercontent.com/42829215/215198795-739eb6bf-96db-4f75-a5a4-a0efca15549b.png)
  
- # Configuration tier, uso de @Configuration y ``@Bean``
-``@Configuration`` es una anotación utilizada en Spring Framework para marcar una clase como clase de configuración. Esta anotación se utiliza para definir los ajustes de configuración de la aplicación, como los ajustes de conexión a la base de datos, los ajustes de autenticación o los ajustes de registro. También se utiliza para proporcionar una capa de abstracción entre el código de la aplicación y los ajustes de configuración.
+
  
 # Capa controller, uso de ``@RestController``
 El nivel de controlador es responsable de manejar las solicitudes del usuario de la aplicación. Es responsable de enrutar las solicitudes al servicio apropiado en la aplicación y de devolver la respuesta al usuario. El nivel de controlador también proporciona métodos de autenticación, autorización y validación de datos.
