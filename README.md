@@ -109,6 +109,8 @@ Es  una libreria de java que a tra ves de anotaciones nos reduce codigo que codi
  - Diseñadas para la vista
  - Puede contener info de muchas entidades
  
+Nota: Cuando estamos trabajando en microservicios o un componente de acceso a la base de datos  tenemos una clase model, cuando nosostros queremos enviar una clase por un request, como buena practica no debemos enviar la clase si no que debemos convertir la clase en un ``DTO``, este son las clases que no llevan ningun tipo de logica negocios, solo sirven para transportar informacion por http. Podemos usar la dependencia de ``modelmapper`` para hacer menos complejo el mapaeado  de la clase a la clase ``DTO``, se puede de hacer otras formas pero usar ``modelmapper`` nos simplifica el trabajo.
+ 
  ``@Data`` es una anotación de Lombok que se usa en el nivel DTO para generar métodos getter y setter para una clase. Esta anotación genera el código repetitivo necesario para acceder y modificar campos en una clase DTO. Se utiliza para proporcionar una forma rápida y fácil de acceder y modificar datos en el nivel DTO de una aplicación.
  ### Ejemplo creacion de un Dto
  ![image](https://user-images.githubusercontent.com/42829215/215198795-739eb6bf-96db-4f75-a5a4-a0efca15549b.png)
@@ -637,5 +639,3 @@ log.info(personService.findAll());
 ![image](https://user-images.githubusercontent.com/42829215/215032299-79bced19-a8a7-4f40-ac97-2567d4a5f87d.png)
 Podemos jugar llamando a la funcion con el primer log con el segfundo llamara a todos sin especificar el servicio
 
-
-# 
