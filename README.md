@@ -7,7 +7,7 @@ Spring Tools 4 es la próxima generación de herramientas Spring para su entorno
 - Maven
 - Eclipse STS (Spring Tool Suite)
 
-# URL Repository
+# URL Repository / Dependencias para pom.xml
 
 - [ Spring-boot-starter ](https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-parent)
 - [lombok](https://mvnrepository.com/artifact/org.projectlombok/lombok)
