@@ -11,6 +11,14 @@ Spring Tools 4 es la próxima generación de herramientas Spring para su entorno
 
 - [ Spring-boot-starter ](https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-parent)
 - [lombok](https://mvnrepository.com/artifact/org.projectlombok/lombok)
+- [spring-boot-starter-data-jpa](https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa)
+- [modelmapper](https://mvnrepository.com/artifact/org.modelmapper/modelmapper)
+- [mysql-connector-j](https://mvnrepository.com/artifact/com.mysql/mysql-connector-j)
+- [spring-boot-starter-web](https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web)
+- [springdoc-openapi-ui](https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-ui)
+
+
+## Lombok-ide
 - [lombok-ide](https://www.baeldung.com/lombok-ide)
 
 | Galery |
@@ -267,25 +275,40 @@ Despues de configurar las depenciaas preparar la propiedades se puede utilizar l
 ![image](https://user-images.githubusercontent.com/42829215/215017979-0d3daf1e-4630-4234-9dcc-785c4edd1434.png)
 
 ```.properties
-la propiedades
+# Step 1 : despues de configurar las depenciaas preparar la propiedades
 # Plantilla para JPA
+
 # Application, Metadata al que le damos el nombre de la aplicacion
+
+# Application
 spring.application.name=ms-datasource
+
+# Server
+server.port=${SERVER_PORT:8080}
+server.servlet.context-path=/${spring.application.name}/v1.0
+server.error.include-binding-errors=always
+server.error.include-exception=true
+server.error.include-message=always
+
 # JPA
 spring.jpa.open-in-view=false
 spring.jpa.hibernate.ddl-auto=validate
 spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true
 spring.jpa.hibernate.naming.physical-strategy=org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
 spring.jpa.show-sql = true
+
 # DataSource
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
-spring.datasource.url=${DATASOURCE_URL:jdbc:mysql://localhost:3306/student_db}
+spring.datasource.url=${DATASOURCE_URL:jdbc:mysql://<You IP>:3306/student_db}
 spring.datasource.hikari.username=${DATASOURCE_USERNAME:student_user}
 spring.datasource.hikari.password=${DATASOURCE_PASSWORD:student_pass}
+
 # SQL
 spring.sql.init.mode=always
 spring.sql.init.continue-on-error=false
+
+
 
 ```
 
