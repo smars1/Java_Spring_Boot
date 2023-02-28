@@ -18,6 +18,81 @@ Spring Tools 4 es la próxima generación de herramientas Spring para su entorno
 - [springdoc-openapi-ui](https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-ui)
 
 
+
+## Spring-boot-starter-web 
+
+| Galery |
+| ----- |
+[Ques es spring-boot-starter-web? ]()
+[Started Web Properties]()
+[Anotaciones]()
+
+Spring-boot-starter-web es una depenendencia que funciona y es utilizado principalmente como un iniciador para crear aplicaciones web, incluye RESTFull, utilizando Spring MVC, usa ``Tomcat`` como contenedor inscrustado predeterminado.  
+
+
+Tiene dos caracteristicas importantes:
+- Es compatible con el desarrollo web.
+- Se puede configurar automaticamente.
+
+### Started Web Properties
+Despues de configurar las depenciaas preparar la propiedades application, ejemplo Metadata al que le damos el nombre de la aplicacion
+
+```.properties
+# Application
+spring.application.name=ms-datasource
+
+# Server/ starter web properties
+server.port=${SERVER_PORT:8080}
+server.servlet.context-path=/${spring.application.name}/v1.0
+server.error.include-binding-errors=always
+server.error.include-exception=true
+server.error.include-message=always
+
+```
+### Anataciones
+Esta dependencia nos permite utlizar anotaciones como ``@Restcontroller``, ``@ResquestMapping``.   Donde ``@Restcontroller`` marca la clase como un controlador donde cada método devuelve un objeto de dominio en lugar de una vista. Al anotar una clase con esta anotación, ya no necesita agregar ``@ResponseBody`` a todos los métodos ``@RequestMapping``. Por otro lado  ``@RequestMapping`` nos permite utlizar las anotaciones de los metedos de Restful Api 
+
+|Metodos RestFul Api| | 
+|-----------------|---------------|
+|POST: crear un recurso nuevo.| ``@PostMapping``| 
+|PUT: modificar un recurso existente.| ``@PutMapping`` |
+|GET: consultar información de un recurso.| ``@GetMapping`` |
+|DELETE: eliminar un recurso determinado.| ``@DeleteMapping`` |
+|PATCH: modificar solamente un atributo de un recurso| ``@PatchMapping``|
+
+
+## Swagger y Springdoc-openapi
+
+| Glosario | 
+|-----------------|
+|[Documentamentacion oficial de Springdoc-openapi](https://springdoc.org/)|
+
+
+Swagger es un especificacion abierta para definir las API REST. un documento de swagger es el equivalente de la API REST de un documento ``WSDL`` para un sevicio basado en ``SOAP``.
+
+La dependencia de ``Springdoc-openapi`` ayuda a automatizar la generacion de documentacion de la API para los proyectos que utilizan ``Spring-Boot``.
+``Springdoc-openapi`` funciona examinando la aplicacion en tiempo de ejecucion para inferir a la semantica de API en funcion de las configuraciones de ``Spring``, la estructura de ``clases`` y varias ``anotaciones``
+
+### Ejemplo de implementacion 
+
+Aqui se puede ver como implementamos dentro de la capa de configuracion una clase a la le con figuramos el ``@OpenAPIDefinition`` en el cual podemo agregar una descripcion de nuestra API y su version.
+```.java
+package cl.factorit.cursos.datasource.configuration;
+
+import org.springframework.context.annotation.Configuration;
+
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Info;
+
+@Configuration
+@OpenAPIDefinition(info = @Info(title = "Datasource API", version ="1.0", description = "Datasource Component API"))
+public class SpringOpneAPIConfiguration {
+}
+```
+
+
+
+
 ## Lombok-ide
 - [lombok-ide](https://www.baeldung.com/lombok-ide)
 
@@ -153,6 +228,8 @@ El nivel de controlador es responsable de manejar las solicitudes del usuario de
  - Intermediario entre Usuario y Service
  
  ``@RestController`` es una anotación utilizada en Spring Framework para marcar una clase como controlador para manejar solicitudes REST. Esta anotación se usa para definir la interfaz para manejar solicitudes REST, como solicitudes GET, POST, PUT y DELETE. También se utiliza para proporcionar una capa de abstracción entre el código de la aplicación y el protocolo HTTP.
+ 
+ 
  
 
 
