@@ -11,10 +11,13 @@ Spring Tools 4 es la próxima generación de herramientas Spring para su entorno
 
 # Contenido general 
 
+[``Repositorio de dependencias``]()
+[URL Repository / Dependencias para pom.xml]()
 | ``Contenido sobre dependencias`` |
 | ------ |
 [Spring-boot-starter-web]()
 [Swagger y Springdoc-openapi]()
+[Spring Starter Security]()
 [``Capas``]()
 
 
@@ -146,6 +149,19 @@ Podemos utilizar la dependecia de ``Springdoc-openapi`` para documentar nuestras
 		return ResponseEntity.status(HttpStatus.CREATED).body(userMapper.toDTO(newuser));
 	}
 ```
+## Spring Starter Security
+``Spring Security`` es un marco de autenticacion y control de acceso potente y altamente personalizable. Tambien es el estandar facto para proteger aplicaciones basadas``Spring Boot``. Este se enfoca en proporcionar auteticacion y autorizacion a las aplicaciones Java.
+El potencial de ``Spring sucurity`` se encuentra en la facilidad con la que se puede ampliar para cumplir con sus requisitos personalizados.
+
+
+
+## IO JsonWebToken 
+El ``JsonWebToken`` es un estandar de internet propuesto para crear datos con firma opcional y encriptacion opcional cuya carga util contiene un ``JSON`` que contiene cierta cantidad de reclamos los llamados claims en ingles. Los Token se firman mediante una clave secreta.
+
+El ``JWT`` se utiliza cuando comunmente para manejar la auteticacion en aplicaciones web o moviles, dado que se utilza para enviar datos entre aplicaciones o servicios y garantizar que sean validos y seguros. 
+
+- jjwt-gson
+- jjwt-impl 
 
 
 
