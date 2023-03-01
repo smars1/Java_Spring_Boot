@@ -2,10 +2,21 @@
 
 Spring Tools 4 es la próxima generación de herramientas Spring para su entorno de codificación favorito. Reconstruido en gran parte desde cero, proporciona soporte de clase mundial para desarrollar aplicaciones empresariales basadas en Spring, ya sea que prefiera Eclipse, Visual Studio Code o Theia IDE.
 
+``Nota Sobre micriservicios``: Una arquitectura de ``microsercios`` es un enfoque que para desarrollar una aplicacion de software como una serie de pequeños servicios, cada uno ejecutandose de forma autonoma y comonucicandose entre si, por ejemplo a traves de peticiones ``HTTP`` a sus ``API``
+
 # Requisitos 
 - Java 17 (jdk)
 - Maven
 - Eclipse STS (Spring Tool Suite)
+
+# Contenido general 
+
+| ``Contenido sobre dependencias`` |
+| ------ |
+[Spring-boot-starter-web]()
+[Swagger y Springdoc-openapi]()
+[``Capas``]()
+
 
 # URL Repository / Dependencias para pom.xml
 
@@ -65,7 +76,10 @@ Esta dependencia nos permite utlizar anotaciones como ``@Restcontroller``, ``@Re
 
 | Glosario | 
 |-----------------|
-|[Documentamentacion oficial de Springdoc-openapi](https://springdoc.org/)|
+[Documentamentacion oficial de Springdoc-openapi](https://springdoc.org/)
+[Rest API Tutorial, Swagger UI](https://restfulapi.net/resource-naming/)
+[Ejemplo de implementacion en la capa de configuracion]()
+[Ejemplo implentacion de Springdoc-openapi en la capa Cotroller]()
 
 
 Swagger es un especificacion abierta para definir las API REST. un documento de swagger es el equivalente de la API REST de un documento ``WSDL`` para un sevicio basado en ``SOAP``.
@@ -73,7 +87,7 @@ Swagger es un especificacion abierta para definir las API REST. un documento de 
 La dependencia de ``Springdoc-openapi`` ayuda a automatizar la generacion de documentacion de la API para los proyectos que utilizan ``Spring-Boot``.
 ``Springdoc-openapi`` funciona examinando la aplicacion en tiempo de ejecucion para inferir a la semantica de API en funcion de las configuraciones de ``Spring``, la estructura de ``clases`` y varias ``anotaciones``
 
-### Ejemplo de implementacion 
+### Ejemplo de implementacion en la capa de configuracion
 
 Aqui se puede ver como implementamos dentro de la capa de configuracion una clase a la le con figuramos el ``@OpenAPIDefinition`` en el cual podemo agregar una descripcion de nuestra API y su version.
 ```.java
@@ -87,8 +101,52 @@ import io.swagger.v3.oas.annotations.info.Info;
 @Configuration
 @OpenAPIDefinition(info = @Info(title = "Datasource API", version ="1.0", description = "Datasource Component API"))
 public class SpringOpneAPIConfiguration {
+
+
 }
 ```
+### Ejemplo de implementacion en la capa Controller
+Podemos utilizar la dependecia de ``Springdoc-openapi`` para documentar nuestras funciones o en este caso de ejemplo en particular podemos describir como funciona nuestro metodo ``register``, pero esto puede aplicarse a acualquier metodo.
+
+```.java
+//ahora al agregar las dependecias de Person que ya habiamos creado antes, podemos crear a la persona y despues al user en el mismo metodo de user controller
+	@PostMapping("/register")
+	@Operation(description = "operacion de inicio de sesion de usuario y su perfil. ", requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(required = true, 
+	content = {@Content(mediaType = MediaType.APPLICATION_JSON_VALUE, examples = {
+	@ExampleObject (value = """
+			{                         
+			 "username":"Char.Mander",
+			 "password":"string",
+			 "person":{
+				 "name":"Diego Atzin",
+				 "email":"diego.pineda@factorit.com", 
+				 "birthDate":"1998-05-08",
+				 "commune":{ 
+				 "id":100
+				 }
+				}
+			}
+			""")})}))
+	
+	public ResponseEntity<UserDTO> save(@RequestBody UserDTO userDTO){
+		user userfind = userService.findByUsername(userDTO.getUsername());
+		//si el usuario no es null, es que ya existe y no permitimos que se repita ese username
+		if (userfind != null)
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Usuario ya existe.");
+		user newuser = userMapper.toModel(userDTO);
+		Person person = personMapper.toModel(userDTO.getPerson());
+		person = personService.save(person);
+		newuser.setPerson(person);
+		//newuser.setPassword(passwordEncoder.encode(newuser.getPassword())); //<-- puede harce asi o para una mejor lectura de codigo
+		String passEncrypt = passwordEncoder.encode(newuser.getPassword());
+		newuser.setPassword(passEncrypt);
+		newuser = userService.save(newuser);
+		// no es buena practica devolver la password asi que para no devolverla le declaramos que despues de guardarla nos arroje un null password
+		newuser.setPassword(null);
+		return ResponseEntity.status(HttpStatus.CREATED).body(userMapper.toDTO(newuser));
+	}
+```
+
 
 
 
