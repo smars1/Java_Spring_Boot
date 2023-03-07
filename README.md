@@ -151,10 +151,12 @@ Podemos utilizar la dependecia de ``Springdoc-openapi`` para documentar nuestras
 ```
 ## Spring Starter Security
 
+
 | Glorario de Springframework.boot.autoconfigure.security | 
-|-----------------|---------------|
+|------------------------------|
 [Spring Starter Security]()
 [Desabilitar la sseguridad por default]()
+
 
 ``Spring Security`` es un marco de autenticacion y control de acceso potente y altamente personalizable. Tambien es el estandar facto para proteger aplicaciones basadas``Spring Boot``. Este se enfoca en proporcionar auteticacion y autorizacion a las aplicaciones Java.
 El potencial de ``Spring sucurity`` se encuentra en la facilidad con la que se puede ampliar para cumplir con sus requisitos personalizados.
