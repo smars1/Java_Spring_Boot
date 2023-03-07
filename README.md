@@ -66,7 +66,7 @@ server.error.include-message=always
 ### Anataciones
 Esta dependencia nos permite utlizar anotaciones como ``@Restcontroller``, ``@ResquestMapping``.   Donde ``@Restcontroller`` marca la clase como un controlador donde cada método devuelve un objeto de dominio en lugar de una vista. Al anotar una clase con esta anotación, ya no necesita agregar ``@ResponseBody`` a todos los métodos ``@RequestMapping``. Por otro lado  ``@RequestMapping`` nos permite utlizar las anotaciones de los metedos de Restful Api 
 
-|Metodos RestFul Api| | 
+|Metodos RestFul Api| Anotacion | 
 |-----------------|---------------|
 |POST: crear un recurso nuevo.| ``@PostMapping``| 
 |PUT: modificar un recurso existente.| ``@PutMapping`` |
@@ -150,11 +150,18 @@ Podemos utilizar la dependecia de ``Springdoc-openapi`` para documentar nuestras
 	}
 ```
 ## Spring Starter Security
+
+| Glorario de Springframework.boot.autoconfigure.security | 
+|-----------------|---------------|
+[Spring Starter Security]()
+[Desabilitar la sseguridad por default]()
+
 ``Spring Security`` es un marco de autenticacion y control de acceso potente y altamente personalizable. Tambien es el estandar facto para proteger aplicaciones basadas``Spring Boot``. Este se enfoca en proporcionar auteticacion y autorizacion a las aplicaciones Java.
 El potencial de ``Spring sucurity`` se encuentra en la facilidad con la que se puede ampliar para cumplir con sus requisitos personalizados.
 
-### Implenentacion de Spring  Sercurity
-Deberemos agregar la seguridad en la capa de configuracion. 
+
+## Implenentacion de Spring  Security
+Deberemos agregar la seguridad en la capa de configuracion.
 
 ### Ejemplo de template de Spring Security
 ```.java
@@ -241,6 +248,19 @@ public class SecurityConfiguration {
 }
 ```
 
+### Desabilitar la sseguridad por default
+
+Una vez implemetada la configuracion de seguridad esta implementara un password por defecto cada vez que ejecutemos el codigo por lo que deberemos ir a nuestro main principal y excluir esta conficuracion, para asi nosotros poder  trabajar con nuestra configuracion. esto lo podemos hacer agregando la siguiente caracteristicas ``(exclude = {UserDetailsServiceAutoConfiguration.class})`` en la anotacion de ``@SpringBootApplication``, asi como se muestra debajo
+
+```.java
+// eliminamos la autoconfiguracion de sprinSecurity utilizanod el main 
+@SpringBootApplication(exclude = {UserDetailsServiceAutoConfiguration.class})
+public class DatasourceApplication {
+	
+	public static void main(String[] args) {
+		SpringApplication.run(DatasourceApplication.class, args);
+	}
+```
 
 
 ## IO JsonWebToken 
@@ -251,6 +271,89 @@ El ``JWT`` se utiliza cuando comunmente para manejar la auteticacion en aplicaci
 - jjwt-gson
 - jjwt-impl 
 
+|Anotaciones| Descripcion | 
+|-----------------|---------------|
+| ``@SecurityScheme`` | Nos permite agregar una cabezara o en ingles header, de autentifacion|
+
+
+## Agregano SecurityScheme
+
+Debemos agregar @SecurityScheme a la configuracion de la documentacion de ``Swagger`` la cual es la que generamos con la dependencia de ``@OpenAPI``.
+
+### Agregando @SecurityScheme 
+
+```.java
+package cl.factorit.cursos.datasource.configuration;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpHeaders;
+
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.enums.SecuritySchemeIn;
+import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
+import io.swagger.v3.oas.annotations.info.Info;
+import io.swagger.v3.oas.annotations.security.SecurityScheme;
+
+@Configuration
+@OpenAPIDefinition(info = @Info(title = "Datasource API", version ="1.0", description = "Datasource Component API"))
+// agregamo una cabezera de autentificacion, Nota: bearer es una convecion para los Authorization token 
+@SecurityScheme(bearerFormat = "jwt", name = HttpHeaders.AUTHORIZATION, scheme = "bearer", type = SecuritySchemeType.APIKEY, in = SecuritySchemeIn.HEADER)
+public class SpringOpneAPIConfiguration {
+
+}
+```
+
+
+### Template de implementacion de JWT
+Podemos implementar el JWT  y confugurarlo, ya sea su algoritmo su valor o tiempo de duracion de validacion, el siguiente template puede ser usado para otros proyectos de las ultimas versiones, podemos esconder el secreto en la propiedades del proyecto.
+
+```.java
+package cl.factorit.cursos.datasource.configuration;
+
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.JwtParser;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+import javax.crypto.spec.SecretKeySpec;
+import java.util.Date;
+
+@Component
+public class TokenManager {
+    public static final long TOKEN_VALIDITY = 3600;
+
+    private final SecretKeySpec secretKeySpec;
+    private final JwtParser jwtParser;
+    
+    public TokenManager(@Value("${jwt.secret}") String jwtSecret) {
+        SignatureAlgorithm sa = SignatureAlgorithm.HS256;
+        this.secretKeySpec = new SecretKeySpec(jwtSecret.getBytes(), sa.getJcaName());
+        this.jwtParser = Jwts.parserBuilder().setSigningKey(secretKeySpec).build();
+    }
+	
+	// Expiacion de token 
+    public String generateJwtToken(String username) {
+        return Jwts.builder().setSubject(username)
+                .setIssuedAt(new Date(System.currentTimeMillis()))
+                .setExpiration(new Date(System.currentTimeMillis() + TOKEN_VALIDITY * 1000))
+                .signWith(secretKeySpec).compact();
+    }
+	// validamos que nuestro token sea valido, debe ser igual al que se genero y si el token no a expirado
+    public boolean validateJwtToken(String token) {
+        Claims claims = jwtParser.parseClaimsJws(token).getBody();
+        boolean isTokenExpired = claims.getExpiration().before(new Date());
+        return !isTokenExpired;
+    }
+
+    public String getSubject(String token) {
+        Claims claims = jwtParser.parseClaimsJws(token).getBody();
+        return claims.getSubject();
+    }
+
+}
+```
 
 
 
